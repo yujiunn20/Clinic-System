@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>Drug</title>
+        <script src = "drugs.js"></script>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const drugcode = params.get("drug");
+            const drugname = drugMap.get(drugcode);
+            document.title = drugname; 
+        </script>
+    </head>
+    <body>
+        <h2>藥名: <span id = "drugname"></span></h2>
+        <script>
+            var Dname = document.getElementById("drugname");
+            Dname.innerText = drugname;
+        </script>
+        <div style = "text-align: left;"> 
+            <img id = "drugimg" alt = "Drug Image" width = "200px" height = "200px">
+        </div>
+        <script>
+            const Dimg = document.getElementById("drugimg");
+            Dimg.src = "Drugs/" + drugcode + "/image.jpg";
+        </script>
+        <hr><h3>學名<br><span id="name"></span></h3>
+        <hr><h3>適應症<br><span id="indication"></span></h3>
+        <hr><h3>禁忌<br><span id="contra"></span></h3>
+        <hr><h3>副作用<br><span id="side"></span></h3>
+        <hr><h3>用法用量<br><span id="dose"></span></h3>
+        <hr><h3>注意事項<br><span id="caution"></span></h3>
+        <hr><h3>藥理機轉<br><span id="mechanism"></span></h3>
+        <hr><h3>其他資訊<br><span id="other"></span></h3>
+        <script> //取用Drugs/drugcode/info.js的資料，裡面有Content的Map
+            const infoScript = document.createElement("script");
+            infoScript.src = "Drugs/" + drugcode + "/info.js";
+            infoScript.onload = function() {
+                document.getElementById("name").innerText = Content.get("name");
+                document.getElementById("indication").innerText = Content.get("indication");
+                document.getElementById("contra").innerText = Content.get("contra");
+                document.getElementById("side").innerText = Content.get("side");
+                document.getElementById("dose").innerText = Content.get("dose");
+                document.getElementById("caution").innerText = Content.get("caution");
+                document.getElementById("mechanism").innerText = Content.get("mechanism");
+                document.getElementById("other").innerText = Content.get("other");
+            };
+            
+            infoScript.onerror = () => {
+                console.error("Failed to load drug info script.");
+            };
+
+            document.body.appendChild(infoScript);
+        </script>
+    </body>
+</html>

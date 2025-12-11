@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <meta charset = "utf-8">
+    <title>Search Drug </title>
+    <head>
+        <script src = "drugs.js"></script>
+        <script>
+            function printout(sDrug){
+                document.getElementById("drugCount").innerText = sDrug.length;
+                var list = document.getElementById("list");
+                list.innerHTML = "";
+                for(let [k, v] of sDrug){
+                    var txtNode = document.createTextNode(v);
+                    var newlink = document.createElement("a");
+                    newlink.setAttribute("href", "DrugContents.html?drug=" + encodeURIComponent(k));
+                    newlink.setAttribute("target", "_blank");
+                    newlink.appendChild(txtNode);
+                    var li = document.createElement("li");
+                    li.appendChild(newlink);
+                    list.appendChild(li);
+                }
+            }
+            function stringchange(s){
+                return s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+            }
+            function searchDrug(){
+                var key = stringchange(document.getElementById("drugname").value);
+                var res = [];
+                if (key == ""){
+                    printout("");
+                    return;
+                }
+                for(let [k, v] of drugMap){
+                    console.log(k)
+                    if(k.includes(key)){
+                        res.push([k, v]);
+                    }
+                }
+                printout(res);
+            }
+        </script>
+    </head>
+    <body>
+        <p>藥名:<input id = "drugname" type = "text"></p>
+        <p>有<span id = "drugCount">0</span>種藥</p>
+        <ul id = "list"></ul>
+        <script>
+            var Dname = document.getElementById("drugname");
+            Dname.addEventListener("keyup", searchDrug);
+        </script>
+    </body>
+</html>

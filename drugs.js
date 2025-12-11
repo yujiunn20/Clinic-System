@@ -1,0 +1,22 @@
+const drugMap = new Map([
+    ["acemetin60mg", "Acemetin 60mg"],
+    ["acetaminophen500mg", "Acetaminophen 500MG"],
+    ["bupropionhcl150mg", "Bupropion Hcl 150mg"],
+    ["celecoxib200mg", "Celecoxib 200mg"],
+    ["champix1mg", "CHAMPIX戒必適1MG"],
+    ["champix05mg", "CHAMPIX戒必適0.5mg"],
+    ["diclofenacpotassium25mg", "Diclofenac Potassium 25mg"],
+    ["ibuprofen400mg", "Ibuprofen 400mg"],
+    ["mounjaro25mg", "Mounjaro 2.5MG"],
+    ["mounjaro50mg", "Mounjaro 5.0MG"],
+    ["mounjaro75mg", "Mounjaro 7.5MG"],
+    ["mounjaro100mg", "Mounjaro 10.0MG"],
+    ["nicorette2mg", "NICORETTE 2mg 口嚼"],
+    ["nicorette4mg", "NICORETTE 4mg 口嚼"],   
+    ["nicotine30mg", "Nicotine 30mg 貼片"],
+    ["nicotine35mg", "Nicotine 35mg 貼片"],
+    ["rybelsus14mg", "Rybelsus 14mg"],
+    ["vitabcomplex", "VITA B-COMPLEX"],
+    ["vitce", "VIT C+E"],
+    
+]);
